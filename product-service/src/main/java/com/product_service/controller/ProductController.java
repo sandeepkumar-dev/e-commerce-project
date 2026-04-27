@@ -32,6 +32,16 @@ public class ProductController {
         this.s3Service = s3Service;
     }
 
+    @PostMapping("/add")
+    public  ResponseEntity<ApiResponse<String>> addProduct(){
+
+        ApiResponse<String> response = new ApiResponse<>();
+        response.setMessage("Added");
+        response.setStatus(201);
+        response.setData("Product is Succesfully Uploaded");
+        return new ResponseEntity<>(response,HttpStatus.CREATED);
+    }
+
     @GetMapping("/list/categories")
     public ResponseEntity<ApiResponse<List<CategoryDto>>> getCategories(){
         List<CategoryDto> categoriesDto = categoryService.findAll();
